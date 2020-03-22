@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, Max, Min, IsEnum, IsDefined, IsBoolean } from 'class-validator';
 import { Timestamp } from 'typeorm';
-import { ListEntity } from 'entities/list.entity';
+import { ListEntity } from './list.entity';
 
 export class ListDto {
 
