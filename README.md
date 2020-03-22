@@ -23,6 +23,9 @@
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+  
+# IMPORTANT!!!!
+## check the file src/modules/database/db.module.ts for Database options to make it work in your local environment!
 
 ## Description
 
