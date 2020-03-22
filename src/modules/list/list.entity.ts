@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne, ManyToMany, JoinTable, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne, ManyToMany, JoinTable, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 
 import { ListDto } from '../list/list.dto';
 import { UserDto } from '../user/user.dto';
@@ -30,9 +30,7 @@ export class ListEntity {
    @ManyToMany(type => GroupEntity, group => group.lists)
    groups: GroupEntity[]; 
 
-   @ManyToMany(type => ItemEntity, item => item.lists)
-   @JoinTable()
-   items: ItemEntity[] 
+ 
 
     public static createFromDto(dto: ListDto): ListEntity {
         const entity = new ListEntity();
