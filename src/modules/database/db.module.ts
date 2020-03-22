@@ -7,7 +7,9 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Global()
 @Module({
     imports: [
+
         TypeOrmModule.forRoot(),
+
     ],
 })
 export class DatabaseModule implements OnModuleDestroy, OnModuleInit {

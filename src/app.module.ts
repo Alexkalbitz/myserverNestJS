@@ -11,7 +11,9 @@ import { ItemModule } from 'modules/item/item.module';
     DatabaseModule,
     MatchModule,
     TableModule,
+
     ItemModule,
+
     ListModule,
   ],
 })
