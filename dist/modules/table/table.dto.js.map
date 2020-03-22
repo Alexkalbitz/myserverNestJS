@@ -1,0 +1,1 @@
+{"version":3,"file":"table.dto.js","sourceRoot":"","sources":["../../../src/modules/table/table.dto.ts"],"names":[],"mappings":";;AAEA,MAAa,aAAa;IAIf,MAAM,CAAC,MAAM,CAAC,IAAU,EAAE,MAAc;QAC3C,MAAM,GAAG,GAAG,IAAI,aAAa,EAAE,CAAC;QAChC,GAAG,CAAC,IAAI,GAAG,IAAI,CAAC;QAChB,GAAG,CAAC,MAAM,GAAG,MAAM,CAAC;QACpB,OAAO,GAAG,CAAC;IACf,CAAC;CACJ;AAVD,sCAUC"}

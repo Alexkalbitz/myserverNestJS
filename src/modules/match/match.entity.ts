@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
 import { MatchDto } from './match.dto';
 import { TEAM } from '../../shared/team.enum';
+import { TagEntity } from 'modules/tag/tag.entity';
 
 @Entity()
 export class MatchEntity {
@@ -36,6 +37,11 @@ export class MatchEntity {
         nullable: true,
     })
     public numberOfViewers: number;
+
+    @ManyToMany(type => TagEntity, tag => tag.id)
+    @JoinTable()
+    tags: Promise<TagEntity[]>;
+
 
     public static createFromDto(dto: MatchDto): MatchEntity {
         const entity = new MatchEntity();

@@ -15,6 +15,4 @@ import { TableService } from './table.service';
         TableService,
     ],
 })
-export class TableModule {
-
-}
+export class TableModule { }
