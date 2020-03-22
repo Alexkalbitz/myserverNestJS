@@ -39,12 +39,14 @@ export class ItemEntity {
     @ManyToOne(type => UserEntity, user => user.id)
     user: UserEntity;
 
+    @ManyToOne(type => ListEntity, list => list.id)
+    list: ListEntity;
+
    @ManyToMany(type => TagEntity, tag => tag.id)
    @JoinTable()
    tags: TagEntity[]; 
 
-   @ManyToMany(type => ListEntity, list => list.items)
-   lists: ListEntity[];
+  
 
     public static createFromDto(dto: ItemDto): ItemEntity {
         const entity = new ItemEntity();
