@@ -5,16 +5,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 @Global()
 @Module({
     imports: [
-        TypeOrmModule.forRoot({
-            type: 'postgres',
-            host: 'localhost',
-            port: 5433,
-            "username": "postgres",
-            "password": "POST321",
-            "database": "nestJS",
-            entities: ['src/**/*.entity.ts'],
-            synchronize: true,
-        }),
+        TypeOrmModule.forRoot(),
     ],
 })
 export class DatabaseModule implements OnModuleDestroy, OnModuleInit {
