@@ -2,6 +2,8 @@ import { Module, OnModuleDestroy, OnModuleInit, Global } from '@nestjs/common';
 import { Connection } from 'typeorm';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+
+
 @Global()
 @Module({
     imports: [
