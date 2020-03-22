@@ -25,7 +25,9 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
   
 # IMPORTANT!!!!
-## check the file src/modules/database/db.module.ts for Database options to make it work in your local environment!
+## 1. check the file src/modules/database/db.module.ts for Database options to make it work in your local environment!
+## 2. Check your docker-compose.yml if u run postgres on docker
+## 3. if you are frontend using this u will have to add "app.enableCors();" between lines 5 and 6 in main.ts
 
 ## Description
 
