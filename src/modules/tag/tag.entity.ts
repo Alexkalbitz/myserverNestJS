@@ -26,8 +26,8 @@ export class TagEntity {
 
     
 
-   @ManyToMany(type => ItemEntity, item => item.id)
-   items: ItemEntity[];
+    @ManyToMany(type => ItemEntity, item => item.id)
+    items: ItemEntity[];
 
     
 

@@ -42,9 +42,9 @@ export class ItemEntity {
     @ManyToOne(type => ListEntity, list => list.id)
     list: ListEntity;
 
-   @ManyToMany(type => TagEntity, tag => tag.id)
-   @JoinTable()
-   tags: TagEntity[]; 
+    @ManyToMany(type => TagEntity, tag => tag.id)
+    @JoinTable()
+    tags: TagEntity[]; 
 
   
 

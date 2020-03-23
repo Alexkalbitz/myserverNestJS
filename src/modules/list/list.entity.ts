@@ -27,8 +27,8 @@ export class ListEntity {
     @ManyToOne(type => UserEntity, user => user.id)
     user: UserEntity; 
 
-   @ManyToMany(type => GroupEntity, group => group.lists)
-   groups: GroupEntity[]; 
+    @ManyToMany(type => GroupEntity, group => group.lists)
+    groups: GroupEntity[]; 
 
  
 

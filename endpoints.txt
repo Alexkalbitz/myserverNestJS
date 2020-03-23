@@ -1,0 +1,104 @@
+http://localhost:4000/api/createuser
+POST
+{
+	"password":"userpassword",
+	"email":"user@email.de",
+	"name":"username"
+}
+
+
+http://localhost:4000/api/getallusers
+GET
+[
+  {
+    "id": "f6ec7731-5cf7-4f40-98e5-ca8b07571ae4",
+    "password": "userpassword",
+    "email": "user@email.de",
+    "name": "username"
+  },
+  {
+    "id": "8e13f1da-8cdf-430f-8bf7-5a45c04efcb7",
+    "password": "userpassword",
+    "email": "user@email.de",
+    "name": "username"
+  }
+]
+
+
+http://localhost:4000/api/getalltags
+GET
+[
+  {
+    "id": "3576516d-e373-4abb-bb4c-009b2c4f31fb",
+    "name": "mytag"
+  },
+  {
+    "id": "cd87b308-3e68-4644-9f18-156c7478f372",
+    "name": "dytag"
+  }
+]
+
+
+http://localhost:4000/api/createtag
+POST
+{
+	"name":"dytag"
+}
+
+
+http://localhost:4000/api/creategroup
+POST
+{
+	"name":"newgroup"
+}
+
+
+http://localhost:4000/api/getallgroups
+GET
+[
+  {
+    "id": "58bda944-0d8f-4b62-a104-6bfa4be91384",
+    "name": "newgroup"
+  },
+  {
+    "id": "7e66f5b1-b1cb-4abf-9175-c9e560bc5c02",
+    "name": "mygroup"
+  },
+]
+
+
+http://localhost:4000/api/createitem
+POST
+{
+	"link": "bloedsinn",
+	"title": "Bloedsinn",
+	"type": "Website",
+	"language": "Deutsch",
+	"author": "Dr.Doof",
+	"description": "Zeug über und mit Bloedsinn"
+}
+
+
+
+http://localhost:4000/api/getallitems
+GET
+[
+  {
+    "id": "98b48033-9679-4e26-964f-3d2e92c8ac74",
+    "link": "bloedsinn",
+    "title": "Bloedsinn",
+    "type": "Website",
+    "language": "Deutsch",
+    "author": "Dr.Doof",
+    "description": "Zeug über und mit Bloedsinn"
+  },
+  {
+    "id": "c9dd628c-577f-4997-8c5c-49194176e3bf",
+    "link": "bloedsinn",
+    "title": "Bloedsinn",
+    "type": "Website",
+    "language": "Deutsch",
+    "author": "Dr.Doof",
+    "description": "Zeug über und mit Bloedsinn"
+  }
+]

@@ -27,7 +27,8 @@
 # IMPORTANT!!!!
 ## 1. check the file src/modules/database/db.module.ts for Database options to make it work in your local environment!
 ## 2. Check your docker-compose.yml if u run postgres on docker
-## 3. if you are frontend using this u will have to add "app.enableCors();" between lines 5 and 6 in main.ts
+## endpoints.txt has examples of the current endpoints available
+
 
 ## Description
 

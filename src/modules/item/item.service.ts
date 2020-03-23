@@ -12,9 +12,9 @@ export class ItemService {
 
     constructor(
         @InjectRepository(ItemEntity) private readonly itemRepository: Repository<ItemEntity>,
-    ) {}
+    ) { }
 
-    public async getAllItems(){
+    public async getAllItems() {
         let allLists = [];
 
         allLists = await this.itemRepository.find();
