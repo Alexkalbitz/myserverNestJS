@@ -7,6 +7,8 @@ import { ItemModule } from 'modules/item/item.module';
 import { TagModule } from 'modules/tag/tag.module';
 import { GroupModule } from 'modules/group/group.module';
 import { UserModule } from 'modules/user/user.module';
+import { AuthModule } from 'modules/auth/auth.module';
+import { TestUsersModule } from 'modules/auth/testusers.module';
 
 
 @Module({
@@ -19,6 +21,8 @@ import { UserModule } from 'modules/user/user.module';
     GroupModule,
     ListModule,
     UserModule,
+    AuthModule,
+    TestUsersModule,
   ],
 })
 export class AppModule { }
