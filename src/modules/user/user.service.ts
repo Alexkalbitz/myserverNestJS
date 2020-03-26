@@ -31,27 +31,15 @@ export class UserService {
         return UserDto.createFromEntity(saveUser)
     };
 
-    public async findOne(username: string): Promise<User | undefined>{
-        const users = [
-            {
-              userId: 1,
-              username: 'john',
-              password: 'changeme',
-            },
-            {
-              userId: 7,
-              username: 'chris',
-              password: 'secret',
-            },
-            {
-              userId: 3,
-              username: 'maria',
-              password: 'guess',
-            },
-          ];
-        console.log("findOne in user.service");
+    public async findOne(username: string, pass: string): Promise<User | undefined>{
+        const user = await this.userRepository.findOne({name: username, password: pass})
+        console.log(user, "user.service");
+        if (user){
+          return user
+        } else {
+          return null
+        }
         
-        return users.find(users => users.username === username)
     };
 };
 
