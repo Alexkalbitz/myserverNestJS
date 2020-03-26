@@ -39,7 +39,7 @@ export class UserService {
               password: 'changeme',
             },
             {
-              userId: 2,
+              userId: 7,
               username: 'chris',
               password: 'secret',
             },
