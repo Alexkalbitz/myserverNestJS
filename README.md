@@ -24,10 +24,81 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
   
-# IMPORTANT!!!!
-## 1. check the file src/modules/database/db.module.ts for Database options to make it work in your local environment!
-## 2. Check your docker-compose.yml if u run postgres on docker
-## endpoints.txt has examples of the current endpoints available
+# IMPORTANT!!!! Tasks to make this work!
+## 1. u need a ormconfig.json and put your database configs here 
+if you are using docker make sure your docker uses the same port, pass etc. 
+```bash
+{
+    "type": "postgres",
+    "host": "localhost",
+    "port": "5433",
+    "username": "user",
+    "password": "pass",
+    "database": "nest",
+    "entities": ["src/**/*.entity.ts"],
+    "synchronize": true
+}
+```
+## 2. in src/module/auth u need to place a file constants.ts
+this secretKey has to be protected at all costs and needs to change to something more secure for production 
+
+constants.ts
+```bash
+export const jwtConstants = {
+    secret: 'mySecretKey',
+  };
+```
+
+## 3. Using the server: 
+
+there is no data in the database, to use the /auth/login endpoint 
+you have to first create a user at api/createuser
+
+body
+```bash
+{
+	"password":"secret",
+	"email":"user@email.de",
+	"name":"chris"
+}
+```
+### !!!password is saved as plain text, needs to change for production !!!!
+
+after creating a user you can use the /auth/login endpoint with 
+
+body
+```bash
+{
+	"username":"chris",
+	"password":"secret"
+}
+```
+you will receive an access toekn as response
+
+```bash
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1ODUzMTk2NzUsImV4cCI6MTU4NTMxOTczNX0._uZ1fMim6gTs92IYIsyFJGMl64geQoMY4AJsssRIjow"
+```
+
+for endpoints requiring authorization you ned that access token as bearer token in the header
+the only endpoint using jwt authentication right now is /api/getallusers
+your fetch request should look something like this 
+Postman and Insomnia have a special Auth tab to select "bearer" from 
+
+```bash
+      const token = "eyJhbGciOiJIUzI1NiIsInR5....."
+
+      fetch("http://localhost:4000/api/getallusers", {
+        method: "GET",
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+```
+
+I hope this works for you :)
+
+
+
 
 
 ## Description
