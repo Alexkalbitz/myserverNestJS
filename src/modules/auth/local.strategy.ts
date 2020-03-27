@@ -9,7 +9,7 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
   constructor(private authService: AuthService) {
     super();
   }
-
+  // has to be called validate to override the validate in PassportStrategy
   async validate(username: string, password: string): Promise<any> {
     console.log(username, password, "local.strat")
     const user = await this.authService.validateUser(username, password);

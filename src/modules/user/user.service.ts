@@ -31,8 +31,9 @@ export class UserService {
         return UserDto.createFromEntity(saveUser)
     };
 
-    public async findOne(username: string, pass: string): Promise<User | undefined>{
-        const user = await this.userRepository.findOne({name: username, password: pass})
+    // this is 
+    public async findOne(username: string): Promise<UserDto | null>{
+        const user = await this.userRepository.findOne({name: username})
         console.log(user, "user.service");
         if (user){
           return user
