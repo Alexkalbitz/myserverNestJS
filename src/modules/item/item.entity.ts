@@ -36,15 +36,15 @@ export class ItemEntity {
     @UpdateDateColumn()
     public updated: Date;
 
-    @ManyToOne(type => UserEntity, user => user.id)
-    user: UserEntity;
+    // @ManyToOne(type => UserEntity, user => user.id)
+    // user: UserEntity;
 
-    @ManyToOne(type => ListEntity, list => list.id)
-    list: ListEntity;
+    // @ManyToOne(type => ListEntity, list => list.id)
+    // list: ListEntity;
 
-    @ManyToMany(type => TagEntity, tag => tag.id)
-    @JoinTable()
-    tags: TagEntity[]; 
+    // @ManyToMany(type => TagEntity, tag => tag.id)
+    // @JoinTable()
+    // tags: TagEntity[]; 
 
   
 

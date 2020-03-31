@@ -1,4 +1,4 @@
-import { Get, Controller, Param, Query, Body, Post, UsePipes, ValidationPipe, UseFilters, Put, Patch, Delete, HttpCode, UseGuards } from '@nestjs/common';
+import { Get, Controller, Param, Query, Body, Post, UsePipes, ValidationPipe, UseFilters, Put, Patch, Delete, HttpCode, UseGuards, Header, Req } from '@nestjs/common';
 import { UserService } from './user.service';
 import { UserDto } from './user.dto';
 import { GlobalErrorFilter } from '../../global.error.filter';
@@ -13,13 +13,16 @@ import { JwtAuthGuard } from 'modules/auth/jwt-auth.guard';
 export class UserController {
   constructor(private readonly userService: UserService) { }
 
-  
+
   @UseGuards(JwtAuthGuard)
   @Get('/getallusers')
-  public async getAllUsers(): Promise<UserDto[]>{
+  // by passing @Req to getAllUsers() i get access to the request headers and can decode the jwt 
+  public async getAllUsers(@Req() request: any): Promise<UserDto[]> {
     //console.log('service getallusers')
+    console.log(request.headers, 'getAllUsers');
+
     return this.userService.getAllUsers()
-    }
+  }
 
 
   @Post('/createuser')

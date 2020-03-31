@@ -38,9 +38,9 @@ export class MatchEntity {
     })
     public numberOfViewers: number;
 
-    @ManyToMany(type => TagEntity, tag => tag.id)
-    @JoinTable()
-    tags: Promise<TagEntity[]>;
+    // @ManyToMany(type => TagEntity, tag => tag.id)
+    // @JoinTable()
+    // tags: Promise<TagEntity[]>;
 
 
     public static createFromDto(dto: MatchDto): MatchEntity {

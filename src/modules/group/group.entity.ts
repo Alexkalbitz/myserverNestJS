@@ -26,12 +26,12 @@ export class GroupEntity {
 
     
 
- @ManyToMany(type => UserEntity, user => user.groups)
-   users: UserEntity[];
+    // @ManyToMany(type => UserEntity, user => user.groups)
+    // users: UserEntity[];
 
-    @ManyToMany(type => ListEntity, list => list.groups)
-    @JoinTable()
-     lists: ListEntity[]
+    // @ManyToMany(type => ListEntity, list => list.groups)
+    // @JoinTable()
+    //  lists: ListEntity[]
 
    
 

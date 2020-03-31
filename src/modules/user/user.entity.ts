@@ -1,6 +1,7 @@
-import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne, ManyToMany, JoinTable, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne, ManyToMany, JoinTable, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
 import { UserDto } from './user.dto';
 import { GroupEntity } from '../group/group.entity';
+import { ListEntity } from '../list/list.entity';
 
 @Entity()
 export class UserEntity {
@@ -16,7 +17,7 @@ export class UserEntity {
     public email: string;
 
     @Column() 
-    public name: string;
+    public username: string;
 
     @CreateDateColumn()
     public created: Date;
@@ -24,12 +25,16 @@ export class UserEntity {
     @UpdateDateColumn()
     public updated: Date;
 
-    @ManyToOne(type => UserEntity, user => user.id)
-    friends: UserEntity[]
+    @OneToMany(type => ListEntity, list => list.id)
+    lists: ListEntity[]
 
-    @ManyToMany(type => GroupEntity, group => group.users)
-    @JoinTable()
-    groups: GroupEntity[]; 
+
+    // @ManyToOne(type => UserEntity, user => user.id)
+    // friends: UserEntity[]
+
+    // @ManyToMany(type => GroupEntity, group => group.users)
+    // @JoinTable()
+    // groups: GroupEntity[]; 
 
   
 
@@ -38,7 +43,8 @@ export class UserEntity {
         entity.id = dto.id;
         entity.password = dto.password;
         entity.email = dto.email;
-        entity.name = dto.name;
+        entity.username = dto.username;
+        entity.lists = dto.lists;
         
 
         return entity;

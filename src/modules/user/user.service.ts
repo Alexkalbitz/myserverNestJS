@@ -15,9 +15,9 @@ export class UserService {
 
     constructor(
         @InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity>,
-    ) {}
+    ) { }
 
-    public async getAllUsers(){
+    public async getAllUsers() {
         let allLists = [];
 
         allLists = await this.userRepository.find();
@@ -28,19 +28,30 @@ export class UserService {
     public async createNewUser(user: UserDto) {
         const newUserEntity = UserEntity.createFromDto(user);
         const saveUser = await this.userRepository.save(newUserEntity);
-        return UserDto.createFromEntity(saveUser)
+        const newUser = UserDto.createForClient(saveUser)
+        return newUser
     };
 
     // this is 
-    public async findOne(username: string): Promise<UserDto | null>{
-        const user = await this.userRepository.findOne({name: username})
+    public async findOne(username: string): Promise<UserDto> {
+        const user = await this.userRepository.findOne({ username: username })
         console.log(user, "user.service");
-        if (user){
-          return user
+        if (user) {
+            return user
         } else {
-          return null
+            throw new NotFoundException();
         }
-        
     };
-};
 
+
+    public async findOneById(userId: string): Promise<UserEntity> {
+        const user = await this.userRepository.findOne(userId)
+        if (user) {
+            return user;
+        } else {
+            throw new NotFoundException();
+        }
+    };
+
+
+}

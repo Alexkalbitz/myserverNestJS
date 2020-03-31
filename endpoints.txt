@@ -1,10 +1,91 @@
-http://localhost:4000/api/createuser
-POST
+
+USER:
+
+http://localhost:4000/api/createuser    POST
 {
 	"password":"userpassword",
 	"email":"user@email.de",
-	"name":"username"
+	"username":"username"
 }
+
+response
+{
+  "id": "63da4c77-f0d3-4828-b1c8-bdcae6419fe5",
+  "username": "chris2"
+}
+
+
+LOGIN:
+http://localhost:4000/auth/login     POST
+{
+	"username":"chris2",
+	"password":"secret"
+}
+
+response
+{
+  "userID": "454b7049-04ef-4bae-b457-30be8b4ab276",
+  "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImNocmlzMiIsImlkIjoiNDU0YjcwNDktMDRlZi00YmFlLWI0NTctMzBiZThiNGFiMjc2IiwiaWF0IjoxNTg1NjY4MzM2LCJleHAiOjE1ODU2Njg5MzZ9.PQlP7U1DrY0aAaZ7Bp9swFP0sSa1yTSmIebl_SCaBq0"
+}
+
+______________________________________________
+
+LISTS:
+
+http://localhost:4000/api/createlist    POST
+Guarded Bearer token
+{
+  "public": false,
+  "title": "myadalist",
+  "description": "adsda"
+}
+
+response
+{
+  "id": "39844461-e107-448c-a5fb-f37ec963e81e",
+  "public": false,
+  "title": "myadalist",
+  "description": "adsda",
+  "created": "2020-03-31T15:25:51.459Z",
+  "updated": "2020-03-31T15:25:51.459Z",
+  "owner": {
+    "id": "454b7049-04ef-4bae-b457-30be8b4ab276",
+    "username": "chris2",
+    "created": "2020-03-31T15:25:10.892Z",
+    "updated": "2020-03-31T15:25:10.892Z"
+  }
+}
+
+
+
+http://localhost:4000/api/updatelist    PUT
+Guarded Bearer token
+{
+  "id": "4703abbb-7ca1-4a1f-aa35-28d277c42888",
+  "public": false,
+  "title": "asdawdwdad",
+  "description": "fdgd",
+  "owner": {
+    "id": "c5af659c-f499-426c-938b-6759c6a2e071"
+  }
+}
+
+response
+{
+  "id": "39844461-e107-448c-a5fb-f37ec963e81e",
+  "public": false,
+  "title": "asdawdwdad",
+  "description": "fdgd",
+  "owner": {
+    "id": "454b7049-04ef-4bae-b457-30be8b4ab276",
+    "username": "chris2",
+    "created": "2020-03-31T14:27:00.907Z",
+    "updated": "2020-03-31T14:27:00.907Z"
+  }
+}
+
+
+____________________________________________
 
 
 http://localhost:4000/api/getallusers
