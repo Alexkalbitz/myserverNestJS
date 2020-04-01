@@ -6,7 +6,7 @@ import { ListService } from './list.service';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { jwtConstants } from '../auth/constants';
 import { MyErrorException } from './exceptions/myerror.exception';
-
+import { idFromJwt } from '../../helperfunctions/jwt.helper';
 
 @Controller('/api')
 @UsePipes(ValidationPipe)
@@ -40,19 +40,10 @@ export class ListController{
         @Body() toupdate: ListDto,
     ): Promise<ListDto> {
         const userId = idFromJwt(header.authorization)
-        return this.listService.createNewList(toupdate, userId)
+        return this.listService.updateList(toupdate, userId)
     }
 
     
 }
 
 
-
-//helper
-function idFromJwt(auth: string){
-    const token = auth.split(' ')[1]
-    const jwt = require('jsonwebtoken') 
-    const decoded = jwt.verify(token, jwtConstants.secret);
-    
-    return decoded.id
-  }

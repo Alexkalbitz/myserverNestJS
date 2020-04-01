@@ -14,7 +14,7 @@ export class UserController {
   constructor(private readonly userService: UserService) { }
 
 
-  @UseGuards(JwtAuthGuard)
+
   @Get('/getallusers')
   // by passing @Req to getAllUsers() i get access to the request headers and can decode the jwt 
   public async getAllUsers(@Req() request: any): Promise<UserDto[]> {

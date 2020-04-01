@@ -2,6 +2,7 @@ import { IsNotEmpty, IsString, Max, Min, IsEnum, IsDefined, IsBoolean, IsNotEmpt
 import { Timestamp } from 'typeorm';
 import { ListEntity } from './list.entity';
 import { UserEntity } from '../user/user.entity';
+import { ItemEntity } from '../item/item.entity';
 
 export class ListDto {
 
@@ -13,9 +14,12 @@ export class ListDto {
     @IsNotEmpty()
     public title: string;
 
+    @IsNotEmpty()
     public description: string
 
     public owner: UserEntity;
+
+    public items: ItemEntity[];
 
     public created: Date;
 
@@ -29,6 +33,9 @@ export class ListDto {
         list.title = listEntity.title;
         list.description = listEntity.description;
         list.owner = listEntity.owner;
+        if (listEntity.items) {
+            list.items = listEntity.items
+        }
 
         return list;
     }
@@ -42,6 +49,7 @@ export class ListDto {
         list.created = listEntity.created;
         list.updated = listEntity.updated;
         list.owner = listEntity.owner;
+        list.items = listEntity.items;
 
         delete list.owner.password;
         delete list.owner.email;

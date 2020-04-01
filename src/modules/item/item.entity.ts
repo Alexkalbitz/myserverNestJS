@@ -9,42 +9,68 @@ import { TagEntity } from '../tag/tag.entity';
 @Entity()
 export class ItemEntity {
 
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn('increment')
     public id: string;
 
-    @Column()
-    public link: string;
 
-    @Column()
+    @Column({
+        type: "text",
+        default: "title",
+    })
     public title: string;
 
-    @Column()
+
+    @Column({
+        type: "varchar",
+        default: "no link",
+    })
+    public link: string;
+
+
+    @Column({
+        type: "varchar",
+        length: 25,
+        default: "type",
+    })
     public type: string;
 
-    @Column()
+
+    @Column({
+        type: "varchar",
+        length: 15,
+        default: "English",
+    })
     public language: string;
 
-    @Column()
+
+    @Column({
+        nullable: true,
+        type: "varchar",
+        length: 50,
+        default: "title",
+    })
     public author: string;
 
-    @Column()
+
+    @Column({
+        type: "varchar",
+        length: 500,
+        default: "description",
+    })
     public description: string;
 
+
+    //Autocreated
     @CreateDateColumn()
     public created: Date;
 
     @UpdateDateColumn()
     public updated: Date;
+    
 
-    // @ManyToOne(type => UserEntity, user => user.id)
-    // user: UserEntity;
-
-    // @ManyToOne(type => ListEntity, list => list.id)
-    // list: ListEntity;
-
-    // @ManyToMany(type => TagEntity, tag => tag.id)
-    // @JoinTable()
-    // tags: TagEntity[]; 
+    //relations
+    @ManyToOne(type => ListEntity, list => list.id)
+    public list: ListEntity;
 
   
 
@@ -57,6 +83,7 @@ export class ItemEntity {
         entity.language = dto.language;
         entity.author = dto.author;
         entity.description = dto.description;
+        entity.list = dto.list
 
         return entity;
     }

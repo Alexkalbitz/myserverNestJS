@@ -17,7 +17,8 @@
     "test:watch": "jest --runInBand --watch",
     "test:cov": "jest --runInBand --coverage",
     "test:e2e": "jest --runInBand --config ./test/jest-e2e.json",
-    "webpack": "webpack --config webpack.config.js"
+    "webpack": "webpack --config webpack.config.js",
+    "dbinit": "node src/dbinit"
   },
   "dependencies": {
     "@nestjs/common": "^6.11.11",
@@ -26,6 +27,7 @@
     "@nestjs/passport": "^7.0.0",
     "@nestjs/platform-express": "^6.11.11",
     "@nestjs/typeorm": "^6.3.4",
+    "axios": "^0.19.2",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.11.0",
     "passport": "^0.4.1",

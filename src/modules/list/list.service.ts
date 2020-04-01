@@ -36,23 +36,34 @@ export class ListService {
         const saveList = await this.listRepository.save(newListEntity);
 
         //dont return saveList there is data you dont want to send
-        return ListDto.createForClient(saveList);
+        const result = ListDto.createForClient(saveList);
+        return result
     }
 
     public async updateList(listToUpdate: ListDto, userId: string): Promise<ListDto> {
         if (userId !== listToUpdate.owner.id){
-            throw new MyErrorException('you dont have permission to update this list');
+            throw new MyErrorException('you dont have permission to update this list (sent data)');
         }
         const indb = await this.listRepository.findOne(listToUpdate.id);
-        console.log("indb=====", indb);
-        
         if (!indb) {
             throw new NotFoundException();
+        } 
+        console.log(indb, userId)
+        if (indb.owner.id !== userId) {
+            throw new MyErrorException('List from db owner is not you!')
         }
+        
         const updated = await this.listRepository.merge(indb, listToUpdate);
         const result = await this.listRepository.save(updated);
         
         return ListDto.createForClient(result);
     }
+
+    public async findOneById(id): Promise<ListDto> {
+        const list = await this.listRepository.findOneOrFail({id:id});
+        return list;
+    }
+
+
 
 }

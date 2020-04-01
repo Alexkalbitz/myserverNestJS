@@ -10,6 +10,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         TypeOrmModule.forRoot(),
     ],
 })
+
 export class DatabaseModule implements OnModuleDestroy, OnModuleInit {
 
     constructor(private readonly connection: Connection) { }

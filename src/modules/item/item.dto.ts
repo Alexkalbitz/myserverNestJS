@@ -1,6 +1,7 @@
 import { IsNotEmpty, IsString, Max, Min, IsEnum, IsDefined, IsBoolean } from 'class-validator';
 
 import { ItemEntity } from './item.entity';
+import { ListEntity } from '../list/list.entity';
 
 export class ItemDto {
 
@@ -25,7 +26,8 @@ export class ItemDto {
     @IsNotEmpty()
     public description: string;
 
-    
+    @IsNotEmpty()
+    public list: ListEntity;
 
    
 
@@ -38,6 +40,7 @@ export class ItemDto {
         item.language = itemEntity.language;
         item.author = itemEntity.author;
         item.description = itemEntity.description;
+        item.list = itemEntity.list
       
         return item;
     }
