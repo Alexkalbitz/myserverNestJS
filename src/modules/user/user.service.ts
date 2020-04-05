@@ -19,9 +19,7 @@ export class UserService {
 
     public async getAllUsers() {
         let allLists = [];
-
         allLists = await this.userRepository.find();
-        //console.log('service getAllUsers called')
         return allLists.map((user: UserEntity) => UserDto.createForClient(user));
     };
 
@@ -32,10 +30,9 @@ export class UserService {
         return newUser
     };
 
-    // this is 
+
     public async findOne(username: string): Promise<UserDto> {
         const user = await this.userRepository.findOne({ username: username })
-        //console.log(user, "user.service");
         if (user) {
             return user
         } else {

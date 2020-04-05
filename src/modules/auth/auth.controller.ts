@@ -9,7 +9,7 @@ export class AuthController {
   constructor(private authService: AuthService) {}
 
   @UseGuards(LocalAuthGuard) //using the local-auth.guard going -> local.strategies -> auth.service -> user.service
-  @Post('auth/login') // this 
+  @Post('auth/login') 
   async login( @Request() req: any) {
     return this.authService.login(req.user);
   }

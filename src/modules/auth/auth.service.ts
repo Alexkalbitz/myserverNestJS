@@ -1,6 +1,6 @@
 
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { UserService } from 'modules/user/user.service';
+import { UserService } from '../user/user.service';
 import { JwtService } from '@nestjs/jwt';
 
 @Injectable()
@@ -27,8 +27,8 @@ export class AuthService {
       userId: user.id,
       access_token: this.jwtService.sign(payload),
     };
-    console.log(response.access_token);
-    console.log(response.userId);
+    // console.log(response.access_token);
+    // console.log(response.userId);
     
     return response
   }

@@ -13,9 +13,9 @@ export class TagService {
         @InjectRepository(TagEntity) private readonly tagRepository: Repository<TagEntity>,
     ) {}
 
+
     public async getAllTags(){
         let allLists = [];
-
         allLists = await this.tagRepository.find();
         //console.log('service getAllTags called')
         return allLists.map((tag: TagEntity) => TagDto.createFromEntity(tag));
@@ -27,4 +27,6 @@ export class TagService {
         return TagDto.createFromEntity(saveTag)
     }
 
+
+    
 }

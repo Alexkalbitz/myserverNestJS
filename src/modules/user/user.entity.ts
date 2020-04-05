@@ -6,7 +6,7 @@ import { ListEntity } from '../list/list.entity';
 @Entity()
 export class UserEntity {
 
-    @PrimaryGeneratedColumn('increment')
+    @PrimaryGeneratedColumn('uuid')
     //@OneToMany (friends)
     public id: string;
 

@@ -9,7 +9,7 @@ import { TagEntity } from '../tag/tag.entity';
 @Entity()
 export class ItemEntity {
 
-    @PrimaryGeneratedColumn('increment')
+    @PrimaryGeneratedColumn('uuid')
     public id: string;
 
 
@@ -69,7 +69,9 @@ export class ItemEntity {
     
 
     //relations
-    @ManyToOne(type => ListEntity, list => list.id)
+    @ManyToOne(type => ListEntity, list => list.id, {
+        onDelete: 'CASCADE'
+    })
     public list: ListEntity;
 
   

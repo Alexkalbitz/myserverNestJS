@@ -1,7 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne, ManyToMany, CreateDateColumn, UpdateDateColumn } from 'typeorm';
-import { GroupDto } from '../group/group.dto';
-import { ItemEntity } from '../item/item.entity';
-
+import { Entity, PrimaryGeneratedColumn, Column, Timestamp, ManyToOne, ManyToMany, CreateDateColumn, UpdateDateColumn, Unique } from 'typeorm';
+import { ListEntity } from '../list/list.entity';
+import { TagDto } from './tag.dto';
 
 
 
@@ -13,33 +12,25 @@ export class TagEntity {
     @PrimaryGeneratedColumn('uuid')
     public id: string;
 
-    @Column()
+    @Column({unique: true})    
     public name: string;
 
     @CreateDateColumn()
     public created: Date;
 
-    @UpdateDateColumn()
-    public updated: Date;
-
-    
-
-    
-
-    @ManyToMany(type => ItemEntity, item => item.id)
-    items: ItemEntity[];
+    @ManyToMany(() => ListEntity, list => list.id)
+    lists: ListEntity[];
 
     
 
    
 
-    public static createFromDto(dto: GroupDto): TagEntity {
+    public static createFromDto(dto: TagDto): TagEntity {
         const entity = new TagEntity();
         entity.id = dto.id;
-       
         entity.name = dto.name;
+        entity.lists = dto.lists
         
-
         return entity;
     }
 }

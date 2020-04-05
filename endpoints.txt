@@ -107,11 +107,8 @@ ____________________________________________
 
 ITEMS
 
-http://localhost:4000/api/createitem    POST
-!!! "list" 
+http://localhost:4000/api/createitem/:listId   POST
 Guarded Bearer token
-needs a list id from a list you are owner of 
-(only available inside lists?)
 {
   "link": "link",
   "title": "my Book",
@@ -119,9 +116,32 @@ needs a list id from a list you are owner of
   "language": "Ger",
   "author": "Dr.Deoof",
   "description": "dad",
-  "listid":1
 }
 
+
+
+http://localhost:4000/api/updateitem/:listId   ----- PUT
+Guarded Bearer token
+!!!! id REQUIRED, rest optional, but better to send data even if it did not change!
+{
+	"id": "67b31343-ef05-423b-8419-17038d91ff09",
+	"link": "ads",
+	"title": "asd",
+	"type": "asda",
+	"language": "Ger",
+	"author": "Dr.asd",
+	"description": "dad"
+}
+
+
+http://localhost:4000/api/deleteitem/:itemId   ----- DELETE 
+Guarded Bearer token
+
+response:
+{
+  "raw": [],
+  "affected": 1
+}
 
 
 _____________________________________________

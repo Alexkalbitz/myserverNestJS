@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToMany, JoinTable } from 'typeorm';
 import { MatchDto } from './match.dto';
 import { TEAM } from '../../shared/team.enum';
-import { TagEntity } from 'modules/tag/tag.entity';
+
 
 @Entity()
 export class MatchEntity {

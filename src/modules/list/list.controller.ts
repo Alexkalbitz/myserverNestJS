@@ -1,4 +1,4 @@
-import { Get, Controller, Param, Query, Headers, Body, Post, UsePipes, ValidationPipe, UseFilters, Put, Patch, Delete, HttpCode, UseGuards } from '@nestjs/common';
+import { Get, Controller, Param, Query, Headers, Body, Post, UsePipes, ValidationPipe, UseFilters, Put, Patch, Delete, HttpCode, UseGuards, Req } from '@nestjs/common';
 import { GlobalErrorFilter } from '../../global.error.filter';
 import { ParseUUIDPipe } from '@nestjs/common';
 import { ListDto } from './list.dto';
@@ -42,6 +42,17 @@ export class ListController{
         const userId = idFromJwt(header.authorization)
         return this.listService.updateList(toupdate, userId)
     }
+
+    @UseGuards(JwtAuthGuard)
+    @Delete('/deletelist/:listId')
+    public async deleteList(
+        @Headers()  header: any,
+        @Param('listId', ParseUUIDPipe) listId:string,
+    ): Promise<any> {
+        const userId = idFromJwt(header.authorization)
+        return this.listService.deleteList(listId, userId)
+    }
+
 
     
 }
