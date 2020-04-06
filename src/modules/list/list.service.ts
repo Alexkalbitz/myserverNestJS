@@ -4,6 +4,7 @@ import { ListDto } from './list.dto';
 import { ListEntity } from './list.entity';
 import { Repository, DeleteResult } from 'typeorm';
 import { UserService } from '../user/user.service';
+import { TagService } from '../tag/tag.service';
 import { MyErrorException } from './exceptions/myerror.exception';
 
 
@@ -16,6 +17,7 @@ export class ListService {
         private readonly listRepository: Repository<ListEntity>,
         //private readonly userRepository: Repository<UserEntity>,
         private readonly userService: UserService,
+        private readonly tagService: TagService,
       ) { }
 
     public async getAllLists(): Promise<ListDto[]> {
@@ -32,7 +34,8 @@ export class ListService {
         //ListEntity.createFromDto does not attach a UserEntity!
         const newListEntity = ListEntity.createFromDto(list); 
         newListEntity.owner = user;
-        const saveList = await this.listRepository.save(newListEntity);
+        const saveList = await this.listRepository.manager.save(newListEntity);
+   
 
         //dont return saveList there is data you dont want to send
         const result = ListDto.createForClient(saveList);

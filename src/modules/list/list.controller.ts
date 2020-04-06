@@ -43,6 +43,7 @@ export class ListController{
         return this.listService.updateList(toupdate, userId)
     }
 
+
     @UseGuards(JwtAuthGuard)
     @Delete('/deletelist/:listId')
     public async deleteList(

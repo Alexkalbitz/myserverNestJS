@@ -36,19 +36,21 @@ export class ListEntity {
 
 
     //Relations
-    @ManyToOne(type => UserEntity, user => user.id, {
+    @ManyToOne(() => UserEntity, user => user.id, {
         eager: true,
         onDelete: 'CASCADE'
     })
     public owner: UserEntity; 
 
-    @OneToMany(type => ItemEntity, item => item.id)
+    @OneToMany(() => ItemEntity, item => item.id)
     public items: ItemEntity[];
 
 
-    @ManyToMany(() => TagEntity, tag => tag.id, {
-        eager: true,
+    @ManyToMany(() => TagEntity, tag => tag.name, {
+        cascade: ['insert'],
+        eager: true 
     })
+    @JoinTable()
     public tags: TagEntity[];
 
 
@@ -68,6 +70,7 @@ export class ListEntity {
         entity.description = dto.description;
         entity.items = dto.items;
         entity.owner = dto.owner;
+        entity.tags = dto.tags;
         return entity;
     }
 

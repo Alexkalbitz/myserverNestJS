@@ -42,7 +42,14 @@ async function createList(){
     {
         "public": false,
         "title": "List title",
-        "description": "Description "
+        "description": "Description ",
+        "tags": [
+            {
+            name: 'tag1'
+        },
+        {
+            name: 'tag2'
+        }]
     }
      )
     return res.data

@@ -49,11 +49,18 @@ LISTS:
 
 http://localhost:4000/api/createlist    POST
 Guarded Bearer token
-{
-  "public": false,
-  "title": "myadalist",
-  "description": "adsda"
-}
+    {
+        "public": false,
+        "title": "List title",
+        "description": "Description ",
+        "tags": [
+            {
+            name: 'tag1'
+        },
+        {
+            name: 'tag2'
+        }]
+    }
 
 response
 {

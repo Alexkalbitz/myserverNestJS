@@ -6,7 +6,7 @@ import { ListController } from './list.controller';
 import { ListService } from './list.service';
 import { UserModule } from '../user/user.module';
 import { ItemModule } from '../item/item.module';
-import { UserService } from '../user/user.service';
+import { TagModule } from '../tag/tag.module';
 
 
 @Module({
@@ -14,6 +14,7 @@ import { UserService } from '../user/user.service';
         TypeOrmModule.forFeature([ListEntity]),
         UserModule,
         forwardRef(() => ItemModule),
+        TagModule,
         //ItemModule,
     ],
     controllers: [

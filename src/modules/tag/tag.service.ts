@@ -21,12 +21,15 @@ export class TagService {
         return allLists.map((tag: TagEntity) => TagDto.createFromEntity(tag));
     };
 
+    
     public async createNewTag(tag: TagDto) {
         const newTagEntity = TagEntity.createFromDto(tag);
         const saveTag = await this.tagRepository.save(newTagEntity);
         return TagDto.createFromEntity(saveTag)
     }
 
-
     
+
+
+
 }

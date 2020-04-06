@@ -3,6 +3,7 @@ import { Timestamp } from 'typeorm';
 import { ListEntity } from './list.entity';
 import { UserEntity } from '../user/user.entity';
 import { ItemEntity } from '../item/item.entity';
+import { TagEntity } from '../tag/tag.entity';
 
 export class ListDto {
 
@@ -21,6 +22,8 @@ export class ListDto {
 
     public items: ItemEntity[];
 
+    public tags: TagEntity[];
+
     public created: Date;
 
     public updated: Date;
@@ -36,6 +39,9 @@ export class ListDto {
         if (listEntity.items) {
             list.items = listEntity.items
         }
+        if (listEntity.tags) {
+            list.tags = listEntity.tags
+        } 
 
         return list;
     }
@@ -50,6 +56,9 @@ export class ListDto {
         list.updated = listEntity.updated;
         list.owner = listEntity.owner;
         list.items = listEntity.items;
+        if (listEntity.tags) {
+            list.tags = listEntity.tags
+        } 
 
         delete list.owner.password;
         delete list.owner.email;
