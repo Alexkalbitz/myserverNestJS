@@ -50,7 +50,7 @@ export const jwtConstants = {
 ```
 
 ## 3. Using the server: 
-
+### token ist set to expire after 60seconds!!! can eb changed in the auth.module.ts line 19
 there is no data in the database, to use the /auth/login endpoint 
 you have to first create a user at api/createuser
 
